@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\RoleEnum;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -32,7 +33,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->validated());
+        User::create($request->validated())->assignRole(RoleEnum::USER);
 
         return redirect()->route('users.index');
     }
