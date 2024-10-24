@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use App\RoleEnum;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

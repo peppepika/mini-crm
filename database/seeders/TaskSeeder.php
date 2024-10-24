@@ -2,20 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Enums\RoleEnum;
+use App\Models\Task;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
-class RoleSeeder extends Seeder
+class TaskSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Role::create(['name' => RoleEnum::USER->value]);
-        Role::create(['name' => RoleEnum::ADMIN->value]);
-
+        Task::factory(20)->create();
     }
 }
