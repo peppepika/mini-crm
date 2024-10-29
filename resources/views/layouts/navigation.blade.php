@@ -25,7 +25,7 @@
                     <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">
                         {{ __('Tasks') }}
                     </x-nav-link>
-                    @can('manage_users')
+                    @can(\App\Enums\PermissionEnum::MANAGE_USERS->value)
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}
                     </x-nav-link>
@@ -94,7 +94,7 @@
             <x-responsive-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">
                 {{ __('Tasks') }}
             </x-responsive-nav-link>
-            @can('manage_users')
+            @can(\App\Enums\PermissionEnum::MANAGE_USERS->value)
 
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                 {{ __('Users') }}

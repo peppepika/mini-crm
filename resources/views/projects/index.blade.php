@@ -58,6 +58,7 @@
                                 <a href="{{ route('projects.edit', $project) }}">
                                     Edit
                                 </a>
+                                @can(\App\Enums\PermissionEnum::DELETE_PROJECT)
                                 /
                                 <form method="POST"
                                       class="inline-table"
@@ -69,6 +70,7 @@
                                         Delete
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

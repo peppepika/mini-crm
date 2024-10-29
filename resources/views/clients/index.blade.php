@@ -46,6 +46,7 @@
                                 <a href="{{ route('clients.edit', $client) }}">
                                     Edit
                                 </a>
+                                @can(\App\Enums\PermissionEnum::DELETE_CLIENT)
                                 /
                                 <form method="POST"
                                       class="inline-table"
@@ -57,6 +58,7 @@
                                         Delete
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

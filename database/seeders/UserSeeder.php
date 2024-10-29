@@ -14,12 +14,14 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
+
         User::factory()->create([
             'first_name' => 'admin',
             'last_name' => 'admin',
             'email' => 'admin@mail.com',
             'password' => 'password'
         ])->syncRoles(RoleEnum::ADMIN);
+
         User::factory()->create([
             'first_name' => 'user',
             'last_name' => 'user',

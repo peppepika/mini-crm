@@ -65,6 +65,7 @@
                                 <a href="{{ route('tasks.edit', $task) }}">
                                     Edit
                                 </a>
+                                @can(\App\Enums\PermissionEnum::DELETE_TASK)
                                 /
                                 <form method="POST"
                                       class="inline-table"
@@ -76,6 +77,7 @@
                                         Delete
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -34,6 +35,13 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user){
+            $role = Role::firstOrCreate(['name' => RoleEnum::USER, 'guard_name' => 'web']);
+            $user->assignRole($role);
+        });
+    }
 
     /**
      * Indicate that the model's email address should be unverified.
@@ -45,10 +53,5 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function configure(): static
-    {
-        return $this->afterCreating(function (User $user){
-            $user->assignRole(RoleEnum::USER);
-        });
-    }
+
 }

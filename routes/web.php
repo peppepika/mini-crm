@@ -16,7 +16,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('users', UserController::class)->middleware('role:' . \App\Enums\RoleEnum::ADMIN->value);
+    Route::resource('users', UserController::class)->middleware('can:' . \App\Enums\PermissionEnum::MANAGE_USERS->value);
     Route::resource('clients', ClientController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('tasks', TaskController::class);
